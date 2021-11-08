@@ -1,11 +1,11 @@
-[submodule "azure/azure-iot-sdk-c"]
-	path = azure/azure-iot-sdk-c
-	url = https://github.com/Azure/azure-iot-sdk-c.git
-	branch = lts_07_2021
-	shallow = true
+# [submodule "azure/azure-iot-sdk-c"]
+# 	path = azure/azure-iot-sdk-c
+# 	url = https://github.com/Azure/azure-iot-sdk-c.git
+# 	branch = lts_07_2021
+# 	shallow = true
 
-[submodule "azure/iot-hub-device-update"]
-	path = azure/iot-hub-device-update
-	url = https://github.com/Azure/iot-hub-device-update.git
-	branch = release/2021-q2
-	shallow = true
+# [submodule "azure/iot-hub-device-update"]
+# 	path = azure/iot-hub-device-update
+# 	url = https://github.com/Azure/iot-hub-device-update.git
+# 	branch = release/2021-q2
+# 	shallow = true

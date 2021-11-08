@@ -9,9 +9,9 @@ fn main() {
 
 
     // check for dependencies
-    pkg_config::probe_library("uuid").unwrap();
-    pkg_config::probe_library("openssl").unwrap();
-    pkg_config::probe_library("libcurl").unwrap();
+    // pkg_config::probe_library("uuid").unwrap();
+    // pkg_config::probe_library("openssl").unwrap();
+    // pkg_config::probe_library("libcurl").unwrap();
 
     //check environment variables, could be used to use path from there?
 	// for (name, _value) in env::vars() {
