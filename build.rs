@@ -7,26 +7,19 @@ use cmake;
 
 fn main() {
 
-
-    // check for dependencies
-    // pkg_config::probe_library("uuid").unwrap();
-    // pkg_config::probe_library("openssl").unwrap();
-    // pkg_config::probe_library("libcurl").unwrap();
-
-    //check environment variables, could be used to use path from there?
-	// for (name, _value) in env::vars() {
-	// 	if name.str("XDG") {
-	// 		println!("env found: {}", name);
-	// 	}
-	// }
-
     let path_lib_azuresdk = env::var("LIB_PATH_AZURESDK").expect("$LIB_PATH_AZURESDK is not set");
     let path_lib_eisutils = env::var("LIB_PATH_EISUTILS").expect("$LIB_PATH_EISUTILS is not set");
+    let path_lib_uuid = env::var("LIB_PATH_UUID").expect("$LIB_PATH_UUID is not set");
+    let path_lib_openssl = env::var("LIB_PATH_OPENSSL").expect("$LIB_PATH_OPENSSL is not set");
+    let path_lib_curl = env::var("LIB_PATH_CURL").expect("$LIB_PATH_CURL is not set");
 
 
     // Tell cargo to tell rustc the search path of the libraries
     println!("cargo:rustc-link-search=native={}/lib", path_lib_azuresdk.to_string());
     println!("cargo:rustc-link-search=native={}/lib", path_lib_eisutils.to_string());
+    println!("cargo:rustc-link-search=native={}/lib", path_lib_uuid.to_string());
+    println!("cargo:rustc-link-search=native={}/lib", path_lib_openssl.to_string());
+    println!("cargo:rustc-link-search=native={}/lib", path_lib_curl.to_string());
 
     // Tell cargo to tell rustc to link the azure iot-sdk and eis_utils libraries.
     println!("cargo:rustc-link-lib=iothub_client_mqtt_transport");
