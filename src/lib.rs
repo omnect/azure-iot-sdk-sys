@@ -10,6 +10,8 @@ mod tests {
 
     #[test]
     fn test() {
-        unsafe { super::IoTHub_Init(); }
+        unsafe {
+            super::IoTHub_Init();
+        }
     }
 }
