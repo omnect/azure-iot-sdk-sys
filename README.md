@@ -1,6 +1,6 @@
 # libics-dm-azure-sys
 
-This repository provides a low level rust interface wrapping a prebuild c code azure-iot-sdk and eis-utils.
+This repository provides a low level rust interface wrapping a prebuild [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c) and eis-utils.
 
 ## Usage
 
@@ -14,7 +14,7 @@ example for LIB_PATH_AZURESDK:
 export LIB_PATH_AZURESDK=/build/.conan/data/azure-iot-sdk-c/*/_/_/package/*
 ```
 
-You can use a an absolute path as well as including wildcard semantic.
+You can use an absolute path as well as including wildcard semantics.
 It is expected that the path points to the main directory of the respective c library.
 The built-in libraries must be in the "lib" subfolder.
 The header files must be in the "include" subfolder.
