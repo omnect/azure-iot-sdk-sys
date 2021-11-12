@@ -5,26 +5,29 @@ use std::env;
 use std::path::PathBuf;
 
 fn path_handling(env: &str) -> String {
-    println!("path_handling for env: {}", env);
+    let not_set = format!("env {} is not available", env);
+    let error_glob = format!("Failed to read glob pattern for {}", env);
 
-    let path = env::var(env).expect("PATH is not set");
+    let path = env::var(env).expect(&not_set);
+    let mut path_lib = vec![];
     let mut index = 0;
-    let mut path_lib: String = "".to_string();
-    for entry in glob(&path.to_string()).expect("Failed to read glob pattern") {
+
+    for entry in glob(&path.to_string()).expect(&error_glob) {
         match entry {
             Ok(path) => {
-                println!("path found: {}", path.display());
-                path_lib = path.display().to_string();
+                path_lib.push(path.display().to_string());
             }
             Err(e) => panic!("LIB_PATH: {}", e),
         }
         index += 1;
-        assert_eq!(
-            index, 1,
-            "Multiple paths found for given environment variable"
-        );
     }
-    path_lib
+    if index > 1 {
+        for libs in &path_lib {
+            println!("{}", libs)
+        }
+        panic!("Multiple paths found for {}", env);
+    }
+    path_lib[0].clone()
 }
 
 fn main() {
