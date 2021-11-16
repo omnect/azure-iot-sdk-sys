@@ -22,10 +22,7 @@ fn path_handling(env: &str) -> String {
         index += 1;
     }
     if index > 1 {
-        for libs in &path_lib {
-            println!("{}", libs)
-        }
-        panic!("Multiple paths found for {}", env);
+        panic!("Multiple paths found for {:?}", path_lib);
     }
     path_lib[0].clone()
 }
