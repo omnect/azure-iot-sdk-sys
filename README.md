@@ -1,4 +1,4 @@
-# libics-dm-azure-sys
+# ics-dm-azure-sys-rs
 
 This repository provides a low level rust interface wrapping a prebuild [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c) and eis-utils.
 

@@ -1,5 +1,5 @@
 [package]
-name = "libics-dm-azure-sys"
+name = "ics-dm-azure-sys"
 version = "0.1.0"
 edition = "2018"
 authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>"]
