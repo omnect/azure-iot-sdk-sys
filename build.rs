@@ -29,7 +29,6 @@ fn path_handling(env: &str) -> String {
 
 fn main() {
     let path_lib_azuresdk = path_handling("LIB_PATH_AZURESDK");
-    let path_lib_eisutils = path_handling("LIB_PATH_EISUTILS");
     let path_lib_uuid = path_handling("LIB_PATH_UUID");
     let path_lib_openssl = path_handling("LIB_PATH_OPENSSL");
     let path_lib_curl = path_handling("LIB_PATH_CURL");
@@ -38,10 +37,6 @@ fn main() {
     println!(
         "cargo:rustc-link-search=native={}/lib",
         path_lib_azuresdk.to_string()
-    );
-    println!(
-        "cargo:rustc-link-search=native={}/lib",
-        path_lib_eisutils.to_string()
     );
     println!(
         "cargo:rustc-link-search=native={}/lib",
@@ -67,7 +62,6 @@ fn main() {
     println!("cargo:rustc-link-lib=ssl");
     println!("cargo:rustc-link-lib=crypto");
     println!("cargo:rustc-link-lib=uuid");
-    println!("cargo:rustc-link-lib=eis_utils");
 
     // Tell cargo to invalidate the built crate whenever the wrapper changes
     println!("cargo:rerun-if-changed=wrapper.h");
@@ -85,8 +79,6 @@ fn main() {
             "-I{}/include/azureiot",
             path_lib_azuresdk.to_string()
         ))
-        .clang_arg(format!("-I{}/include", path_lib_eisutils.to_string()))
-        .clang_arg(format!("-I{}/include/aduc", path_lib_eisutils.to_string()))
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
