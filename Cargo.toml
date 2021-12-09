@@ -1,6 +1,6 @@
 [package]
 name = "ics-dm-azure-sys"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>"]
 build = "build.rs"
@@ -10,5 +10,5 @@ build = "build.rs"
 [dependencies]
 
 [build-dependencies]
-bindgen="0.55.1"
-glob="0.3.0"
+bindgen = "0.55.1"
+glob = "0.3.0"
