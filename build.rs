@@ -87,6 +87,15 @@ fn main() {
         ))
         .clang_arg(format!("-I{}/include", path_lib_eisutils.to_string()))
         .clang_arg(format!("-I{}/include/aduc", path_lib_eisutils.to_string()))
+        // seems it is a controverse topic, but for 32bit vs 64 bit systems we
+        // need size_t to be usize to be able to bind callbacks
+        // https://github.com/rust-lang/rust-bindgen/issues/1901 vs
+        // https://github.com/rust-lang/rust-bindgen/issues/1671
+        .size_t_is_usize(true)
+        // blacklist time_t so it doesn't get i32 on 32bit systems and set
+        // it appropriately
+        .blacklist_type("time_t")
+        .raw_line("pub type time_t = std::os::raw::c_longlong;")
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
