@@ -21,15 +21,20 @@ fn path_handling(env: &str) -> String {
         }
         index += 1;
     }
+
+    if path_lib.len() == 0{
+        panic!("No paths found for {:?}", env);
+    }
+
     if index > 1 {
         panic!("Multiple paths found for {:?}", path_lib);
     }
+
     path_lib[0].clone()
 }
 
 fn main() {
     let path_lib_azuresdk = path_handling("LIB_PATH_AZURESDK");
-    let path_lib_eisutils = path_handling("LIB_PATH_EISUTILS");
     let path_lib_uuid = path_handling("LIB_PATH_UUID");
     let path_lib_openssl = path_handling("LIB_PATH_OPENSSL");
     let path_lib_curl = path_handling("LIB_PATH_CURL");
@@ -38,10 +43,6 @@ fn main() {
     println!(
         "cargo:rustc-link-search=native={}/lib",
         path_lib_azuresdk.to_string()
-    );
-    println!(
-        "cargo:rustc-link-search=native={}/lib",
-        path_lib_eisutils.to_string()
     );
     println!(
         "cargo:rustc-link-search=native={}/lib",
@@ -56,7 +57,7 @@ fn main() {
         path_lib_curl.to_string()
     );
 
-    // Tell cargo to tell rustc to link the azure iot-sdk and eis_utils libraries.
+    // Tell cargo to tell rustc to link the azure iot-sdk libraries.
     println!("cargo:rustc-link-lib=iothub_client_mqtt_transport");
     println!("cargo:rustc-link-lib=iothub_client");
     println!("cargo:rustc-link-lib=parson");
@@ -67,7 +68,6 @@ fn main() {
     println!("cargo:rustc-link-lib=ssl");
     println!("cargo:rustc-link-lib=crypto");
     println!("cargo:rustc-link-lib=uuid");
-    println!("cargo:rustc-link-lib=eis_utils");
 
     // Tell cargo to invalidate the built crate whenever the wrapper changes
     println!("cargo:rerun-if-changed=wrapper.h");
@@ -85,8 +85,6 @@ fn main() {
             "-I{}/include/azureiot",
             path_lib_azuresdk.to_string()
         ))
-        .clang_arg(format!("-I{}/include", path_lib_eisutils.to_string()))
-        .clang_arg(format!("-I{}/include/aduc", path_lib_eisutils.to_string()))
         // seems it is a controverse topic, but for 32bit vs 64 bit systems we
         // need size_t to be usize to be able to bind callbacks
         // https://github.com/rust-lang/rust-bindgen/issues/1901 vs

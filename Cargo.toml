@@ -1,9 +1,10 @@
 [package]
-name = "ics-dm-azure-sys"
-version = "0.1.1"
+name = "azure-iot-sdk-sys"
+version = "0.2.0"
 edition = "2018"
-authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>"]
+authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>", "Jan Zachmann <jan.zachmann@conplement.de>"]
 build = "build.rs"
+repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

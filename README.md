@@ -1,11 +1,11 @@
-# ics-dm-azure-sys-rs
+# azure-iot-sdk-sys
 
-This repository provides a low level rust interface wrapping a prebuild [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c) and eis-utils.
+This repository provides a low level rust interface wrapping a prebuild [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c).
 
 ## Usage
 
 To successfully build the low level rust wrapper, the system environment variables
-LIB_PATH_AZURESDK, LIB_PATH_EISUTILS, LIB_PATH_UUID, LIB_PATH_OPENSSL, LIB_PATH_CURL
+LIB_PATH_AZURESDK, LIB_PATH_UUID, LIB_PATH_OPENSSL, LIB_PATH_CURL
 must be present.
 
 example for LIB_PATH_AZURESDK:
