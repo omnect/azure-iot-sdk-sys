@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.0] Q1 2022
  - removed identity service
+ - renamed package and repo to azure-iot-sdk-sys
  - added useful panic to build.rs
 
 ## [0.1.1] Q4 2021
