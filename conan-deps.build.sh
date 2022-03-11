@@ -6,7 +6,6 @@ set -o pipefail
 [[ -z ${BUILD_DIR} ]]                 && echo "error: BUILD_DIR not set"                  && exit 1;
 [[ -z ${CONAN_REMOTE} ]]              && echo "error: CONAN_REMOTE not set"               && exit 1;
 [[ -z ${CONAN_USER_HOME} ]]           && echo "error: CONAN_USER_HOME not set"            && exit 1;
-[[ -z ${SERVICE} ]]                   && echo "error: SERVICE not set"                    && exit 1;
 [[ -z ${SOURCE_DIR} ]]                && echo "error: SOURCE_DIR not set"                 && exit 1;
 
 echo ARCH=${ARCH}
@@ -23,8 +22,8 @@ conan remote add my-conan-remote ${CONAN_REMOTE} ${CONAN_SSL_VERIFICATION} -f --
 
 [[ "${ARCH}" != "x86_64" ]] && NO_TEST="-tf=None"
 
-mkdir -p ${BUILD_DIR}/${SERVICE}
-cd ${BUILD_DIR}/${SERVICE}
+mkdir -p ${BUILD_DIR}
+cd ${BUILD_DIR}
 
 conan install . --profile:host=/conan.${ARCH}.profile --profile:build=/conan.x86_64.profile --build missing ${NO_TEST}
 conan upload "*" -r my-conan-remote --all -c
