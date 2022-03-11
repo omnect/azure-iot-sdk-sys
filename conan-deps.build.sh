@@ -26,15 +26,5 @@ conan remote add my-conan-remote ${CONAN_REMOTE} ${CONAN_SSL_VERIFICATION} -f --
 mkdir -p ${BUILD_DIR}/${SERVICE}
 cd ${BUILD_DIR}/${SERVICE}
 
-# For 'enrollment' we need 'libprovisioning_service_client' and thus
-# enable 'use_prov_client'. Therefore we have two conan config files for
-# 'azure-iot-sdk-c'.
-if [ "${SERVICE}" == "enrollment" ] || [ "${SERVICE}" == "enrollment-dev" ];
-then
-  cp  ${SOURCE_DIR}/simulator/conanfile-prov.txt conanfile.txt;
-else
-  cp  ${SOURCE_DIR}/simulator/conanfile.txt conanfile.txt;
-fi
-
 conan install . --profile:host=/conan.${ARCH}.profile --profile:build=/conan.x86_64.profile --build missing ${NO_TEST}
 conan upload "*" -r my-conan-remote --all -c
