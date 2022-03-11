@@ -1,9 +1,7 @@
 [requires]
-ConanCargoWrapper/0.1@lasote/stable
 azure-iot-sdk-c/LTS_01_2022_Ref01
 
 [generators]
-ConanCargoWrapper
 cmake
 
 [options]
