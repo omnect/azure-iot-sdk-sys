@@ -1,0 +1,16 @@
+[requires]
+ConanCargoWrapper/0.1@lasote/stable
+azure-iot-sdk-c/LTS_01_2022_Ref01
+
+[generators]
+ConanCargoWrapper
+cmake
+
+[options]
+azure-iot-sdk-c:hsm_type_sastoken=False
+azure-iot-sdk-c:hsm_type_x509=False
+azure-iot-sdk-c:skip_samples=True
+azure-iot-sdk-c:use_prov_client=False
+azure-iot-sdk-c:use_tpm_simulator=False
+libcurl:with_zlib=False
+libcurl:with_ssl=False
