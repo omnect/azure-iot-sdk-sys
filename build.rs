@@ -4,7 +4,6 @@ extern crate conan;
 use glob::glob;
 use std::env;
 use std::path::{Path, PathBuf};
-use conan::*;
 
 fn path_handling(env: &str) -> String {
     let not_set = format!("env {} is not available", env);
