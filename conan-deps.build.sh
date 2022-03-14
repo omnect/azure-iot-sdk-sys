@@ -25,5 +25,7 @@ conan remote add my-conan-remote ${CONAN_REMOTE} ${CONAN_SSL_VERIFICATION} -f --
 mkdir -p ${BUILD_DIR}
 cd ${BUILD_DIR}
 
+cp  ${SOURCE_DIR}/conanfile.txt conanfile.txt;
+
 conan install . --profile:host=/conan.${ARCH}.profile --profile:build=/conan.x86_64.profile --build missing ${NO_TEST}
 conan upload "*" -r my-conan-remote --all -c
