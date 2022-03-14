@@ -11,5 +11,5 @@ repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
 [dependencies]
 
 [build-dependencies]
-bindgen = "0.55.1"
+bindgen = "0.59.1"
 glob = "0.3.0"
