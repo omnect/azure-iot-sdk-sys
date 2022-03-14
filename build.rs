@@ -1,9 +1,8 @@
 extern crate bindgen;
-extern crate conan;
 
 use glob::glob;
 use std::env;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 fn path_handling(env: &str) -> String {
     let not_set = format!("env {} is not available", env);
