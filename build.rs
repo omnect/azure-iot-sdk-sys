@@ -92,7 +92,7 @@ fn main() {
         .size_t_is_usize(true)
         // blacklist time_t so it doesn't get i32 on 32bit systems and set
         // it appropriately
-        .blacklist_type("time_t")
+        .blocklist_type("time_t")
         .raw_line("pub type time_t = std::os::raw::c_longlong;")
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
