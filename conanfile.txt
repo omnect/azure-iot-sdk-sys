@@ -1,9 +1,6 @@
 [requires]
 azure-iot-sdk-c/LTS_01_2022_Ref01
 
-[generators]
-cmake
-
 [options]
 azure-iot-sdk-c:hsm_type_sastoken=False
 azure-iot-sdk-c:hsm_type_x509=False
