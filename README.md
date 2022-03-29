@@ -18,7 +18,7 @@ You're free to build your own versions of libraries for the target platform of y
 
 ## Use prebuild libraries for x86
 
-For your convenience we provide for x86 a bundle of libraries with our release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
+For your convenience we provide for x86 a bundle of libraries as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
 
 # License
 
