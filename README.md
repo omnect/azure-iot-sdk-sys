@@ -10,15 +10,15 @@ In order to build `azure-iot-sdk-sys` the following library dependencies must be
 - `LIB_PATH_OPENSSL`: path to openssl libraries
 - `LIB_PATH_CURL`: path to libcurl libraries
 
-There are absolute paths expected that might include wildcard semantics. It is expected that the path points to a directory with a "lib" and "include" folder.
+There are absolute paths expected that might include wildcard semantics. It is expected that the path points to a directory with a "lib" and "include" subfolder.
 
 ## Provide your own libraries
 
 You're free to build your own versions of libraries for the target platform of your choice or use the ones provided by your operating system.
 
-## Use prebuild libraries for x86
+## Use prebuild libraries for x86_64
 
-For your convenience we provide for x86 a bundle of libraries as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
+For your convenience we provide for x86_64 a bundle of libraries, created on Ubuntu 20.04lts, as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
 
 # License
 
