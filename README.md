@@ -1,23 +1,24 @@
 # azure-iot-sdk-sys
 
-This repository provides a low level rust interface wrapping a prebuild [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c).
+This repository provides low level rust bindings for the [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c). `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/ICS-DeviceManagement/azure-iot-sdk) and [iot-client-template](https://github.com/ICS-DeviceManagement/iot-client-template-rs).
 
-## Usage
+# Build
 
-To successfully build the low level rust wrapper, the system environment variables
-LIB_PATH_AZURESDK, LIB_PATH_UUID, LIB_PATH_OPENSSL, LIB_PATH_CURL
-must be present.
+In order to build `azure-iot-sdk-sys` the following library dependencies must be provided via environment variable:
+- `LIB_PATH_AZURESDK`: path to azure-iot-sdk-c libraries
+- `LIB_PATH_UUID`: path to libuuid libraries
+- `LIB_PATH_OPENSSL`: path to openssl libraries
+- `LIB_PATH_CURL`: path to libcurl libraries
 
-example for LIB_PATH_AZURESDK:
+There are absolute paths expected that might include wildcard semantics. It is expected that the path points to a directory with a "lib" and "include" subfolder.
 
-```sh
-export LIB_PATH_AZURESDK=/build/.conan/data/azure-iot-sdk-c/*/_/_/package/*
-```
+## Provide your own libraries
 
-You can use an absolute path as well as including wildcard semantics.
-It is expected that the path points to the main directory of the respective c library.
-The built-in libraries must be in the "lib" subfolder.
-The header files must be in the "include" subfolder.
+You're free to build your own versions of libraries for the target platform of your choice or use the ones provided by your operating system.
+
+## Use prebuild libraries for x86_64
+
+For your convenience we provide for x86_64 a bundle of libraries, created on Ubuntu 20.04lts, as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
 
 # License
 
