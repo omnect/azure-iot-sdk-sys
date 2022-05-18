@@ -23,7 +23,7 @@ For your convenience we provide for x86_64 a bundle of libraries, created on Ubu
 ## Enable iot edge support
 
 In order to build `azure-iot-sdk-sys` with iot edge module API's enabled you have to set `edge_support` cargo feature. This builds bindings with `"-D USE_EDGE_MODULES"` option.<br>
-**Note: `azure-iot-sdk-c`  must have been built with `"-D USE_EDGE_MODULES"` option!**
+**Note: `azure-iot-sdk-c` also must have been built with `"-D USE_EDGE_MODULES"` option!**
 
 # License
 
