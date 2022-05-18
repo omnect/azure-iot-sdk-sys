@@ -22,7 +22,7 @@ fn path_handling(env: &str) -> String {
         index += 1;
     }
 
-    if path_lib.len() == 0{
+    if path_lib.len() == 0 {
         panic!("No paths found for {:?}", env);
     }
 
@@ -71,6 +71,18 @@ fn main() {
 
     // Tell cargo to invalidate the built crate whenever the wrapper changes
     println!("cargo:rerun-if-changed=wrapper.h");
+    println!("cargo:rerun-if-changed=build.rs");
+    println!("cargo:rerun-if-env-changed=CARGO_FEATURE_EDGE_SUPPORT");
+    println!("cargo:rerun-if-env-changed=LIB_PATH_AZURESDK");
+    println!("cargo:rerun-if-env-changed=LIB_PATH_UUID");
+    println!("cargo:rerun-if-env-changed=LIB_PATH_CURL");
+    println!("cargo:rerun-if-env-changed=LIB_PATH_OPENSSL");
+
+    let mut iotedge = "-D USE_EDGE_MODULES";
+
+    if let Err(_e) = env::var("CARGO_FEATURE_EDGE_SUPPORT") {
+        iotedge = "";
+    }
 
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for
@@ -80,6 +92,7 @@ fn main() {
         // bindings for.
         .header("wrapper.h")
         // additional clang arguments.
+        .clang_arg(iotedge)
         .clang_arg(format!("-I{}/include", path_lib_azuresdk.to_string()))
         .clang_arg(format!(
             "-I{}/include/azureiot",

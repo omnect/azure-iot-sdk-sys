@@ -1,6 +1,6 @@
 [package]
 name = "azure-iot-sdk-sys"
-version = "0.2.3"
+version = "0.3.0"
 edition = "2021"
 authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>", "Jan Zachmann <jan.zachmann@conplement.de>"]
 build = "build.rs"
@@ -9,6 +9,11 @@ repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+
+[features]
+# select "default = ["edge_support"]" for building crate with iotedge module support
+default = []
+edge_support = []
 
 [build-dependencies]
 bindgen = "0.59.1"
