@@ -34,6 +34,7 @@ fn path_handling(env: &str) -> String {
 }
 
 fn main() {
+    let mut iotedge = "";
     let path_lib_azuresdk = path_handling("LIB_PATH_AZURESDK");
     let path_lib_uuid = path_handling("LIB_PATH_UUID");
     let path_lib_openssl = path_handling("LIB_PATH_OPENSSL");
@@ -58,10 +59,18 @@ fn main() {
     );
 
     // Tell cargo to tell rustc to link the azure iot-sdk libraries.
+    // Order of libraries matters!
     println!("cargo:rustc-link-lib=iothub_client_mqtt_transport");
     println!("cargo:rustc-link-lib=iothub_client");
     println!("cargo:rustc-link-lib=parson");
     println!("cargo:rustc-link-lib=umqtt");
+
+    if env::var("CARGO_FEATURE_EDGE_MODULES").is_ok() {
+        iotedge = "-DUSE_EDGE_MODULES";
+        println!("cargo:rustc-link-lib=prov_auth_client");
+        println!("cargo:rustc-link-lib=hsm_security_client");
+    }
+
     println!("cargo:rustc-link-lib=uhttp");
     println!("cargo:rustc-link-lib=aziotsharedutil");
     println!("cargo:rustc-link-lib=curl");
@@ -72,17 +81,11 @@ fn main() {
     // Tell cargo to invalidate the built crate whenever the wrapper changes
     println!("cargo:rerun-if-changed=wrapper.h");
     println!("cargo:rerun-if-changed=build.rs");
-    println!("cargo:rerun-if-env-changed=CARGO_FEATURE_EDGE_SUPPORT");
+    println!("cargo:rerun-if-env-changed=CARGO_FEATURE_EDGE_MODULES");
     println!("cargo:rerun-if-env-changed=LIB_PATH_AZURESDK");
     println!("cargo:rerun-if-env-changed=LIB_PATH_UUID");
     println!("cargo:rerun-if-env-changed=LIB_PATH_CURL");
     println!("cargo:rerun-if-env-changed=LIB_PATH_OPENSSL");
-
-    let mut iotedge = "-D USE_EDGE_MODULES";
-
-    if let Err(_e) = env::var("CARGO_FEATURE_EDGE_SUPPORT") {
-        iotedge = "";
-    }
 
     // The bindgen::Builder is the main entry point
     // to bindgen, and lets you build up options for

@@ -11,9 +11,9 @@ repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
 [dependencies]
 
 [features]
-# select "default = ["edge_support"]" for building crate with iotedge module support
+# select "default = ["edge_modules"]" for building crate with iotedge module support
 default = []
-edge_support = []
+edge_modules = []
 
 [build-dependencies]
 bindgen = "0.59.1"
