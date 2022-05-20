@@ -20,6 +20,11 @@ You're free to build your own versions of libraries for the target platform of y
 
 For your convenience we provide for x86_64 a bundle of libraries, created on Ubuntu 20.04lts, as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
 
+## Enable iot edge support
+
+In order to build `azure-iot-sdk-sys` with iot edge module API's enabled you have to set `edge_modules` cargo feature. This builds bindings with `"-DUSE_EDGE_MODULES"` option.<br>
+**Note: `azure-iot-sdk-c` also must have been built with `"-DUSE_EDGE_MODULES"` option!**
+
 # License
 
 Licensed under either of
