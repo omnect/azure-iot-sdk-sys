@@ -1,6 +1,6 @@
 [package]
 name = "azure-iot-sdk-sys"
-version = "0.3.0"
+version = "0.3.1"
 edition = "2021"
 authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>", "Jan Zachmann <jan.zachmann@conplement.de>"]
 build = "build.rs"

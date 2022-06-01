@@ -18,7 +18,10 @@ You're free to build your own versions of libraries for the target platform of y
 
 ## Use prebuild libraries for x86_64
 
-For your convenience we provide for x86_64 a bundle of libraries, created on Ubuntu 20.04lts, as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
+For your convenience we provide a bundle of libraries for the following architectures:
+- [x86_64](https://storageicsdmassets.blob.core.windows.net/pre-built-libs-x86/pre-built-libs-1.tar.xz) 
+- [aarch64](https://storageicsdmassets.blob.core.windows.net/pre-built-libs-aarch64/pre-built-libs-1.tar.xz)
+- [armv7hf](https://storageicsdmassets.blob.core.windows.net/pre-built-libs-armv7hf/pre-built-libs-1.tar.xz)
 
 ## Enable iot edge support
 
