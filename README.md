@@ -4,6 +4,8 @@ This repository provides low level rust bindings for the [azure-iot-sdk-c](https
 
 # Build
 
+@ToDo: whole build chapter must be reworked!!!
+
 In order to build `azure-iot-sdk-sys` the following library dependencies must be provided via environment variable:
 - `LIB_PATH_AZURESDK`: path to azure-iot-sdk-c libraries
 - `LIB_PATH_UUID`: path to libuuid libraries

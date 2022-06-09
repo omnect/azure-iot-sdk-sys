@@ -5,8 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.3.1] Q2 2022
- - update readme to point to pre-built-libs in blob storage
+## [0.4.0] Q2 2022
+ - refactored provisioning of azure-iot-sdk dependencies:
+   - remove env var based approach to provide paths to pre-built libs and headers
+   - instead provide debian packages for all target architectures
+   - use pkg-config in build.rs in order to ensure correctly installed debian package
 
 ## [0.3.0] Q2 2022
  - added iot edge support
