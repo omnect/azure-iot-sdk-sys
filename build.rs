@@ -4,9 +4,27 @@ use std::path::PathBuf;
 
 fn main() {
     let (use_iotedge_modules, pkg_name) = if env::var("CARGO_FEATURE_EDGE_MODULES").is_ok() {
-        ("-DUSE_EDGE_MODULES", "azure-iotedge-sdk-dev")
+        (
+            "-DUSE_EDGE_MODULES",
+            #[cfg(target_arch = "x86_64")]
+            "azure-iotedge-sdk-dev-amd64",
+            #[cfg(target_arch = "aarch64")]
+            "azure-iotedge-sdk-dev-arm64v8",
+            #[cfg(target_arch = "arm")]
+            #[cfg(target_pointer_width = "32")]
+            "azure-iotedge-sdk-dev-arm32v7",
+        )
     } else {
-        ("", "azure-iot-sdk-dev")
+        (
+            "",
+            #[cfg(target_arch = "x86_64")]
+            "azure-iot-sdk-dev-amd64",
+            #[cfg(target_arch = "aarch64")]
+            "azure-iot-sdk-dev-arm64v8",
+            #[cfg(target_arch = "arm")]
+            #[cfg(target_pointer_width = "32")]
+            "azure-iot-sdk-dev-arm32v7",
+        )
     };
 
     let lib = pkg_config::Config::new().probe(pkg_name).unwrap();
