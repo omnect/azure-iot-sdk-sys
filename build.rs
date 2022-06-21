@@ -3,23 +3,10 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
-    let use_iotedge_modules = env::var("CARGO_FEATURE_EDGE_MODULES").is_ok();
-    let (use_iotedge_modules, pkg_name) = match env::var("TARGET").unwrap().as_str() {
-        "x86_64-unknown-linux-gnu" if !use_iotedge_modules => ("", "azure-iot-sdk-dev-amd64"),
-        "aarch64-unknown-linux-gnu" if !use_iotedge_modules => ("", "azure-iot-sdk-dev-arm64v8"),
-        "armv7-unknown-linux-gnueabihf" if !use_iotedge_modules => {
-            ("", "azure-iot-sdk-dev-arm32v7")
-        }
-        "x86_64-unknown-linux-gnu" if use_iotedge_modules => {
-            ("-DUSE_EDGE_MODULES", "azure-iotedge-sdk-dev-amd64")
-        }
-        "aarch64-unknown-linux-gnu" if use_iotedge_modules => {
-            ("-DUSE_EDGE_MODULES", "azure-iotedge-sdk-dev-arm64v8")
-        }
-        "armv7-unknown-linux-gnueabihf" if use_iotedge_modules => {
-            ("-DUSE_EDGE_MODULES", "azure-iotedge-sdk-dev-arm32v7")
-        }
-        _ => panic!("unknown target"),
+    let (use_iotedge_modules, pkg_name) = if env::var("CARGO_FEATURE_EDGE_MODULES").is_ok() {
+        ("-DUSE_EDGE_MODULES", "azure-iotedge-sdk-dev")
+    } else {
+        ("", "azure-iot-sdk-dev")
     };
 
     let lib = pkg_config::Config::new().probe(pkg_name).unwrap();
