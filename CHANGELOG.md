@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
  - refactored provisioning of azure-iot-sdk dependencies:
    - remove env var based approach to provide paths to pre-built libs and headers
    - instead provide debian packages for all target architectures
-   - use pkg-config in build.rs in order to ensure correctly installed debian package
+   - use pkg-config in build.rs to get and ensure dependencies
 
 ## [0.3.0] Q2 2022
  - added iot edge support
