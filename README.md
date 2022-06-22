@@ -23,7 +23,7 @@ We provide debian packages for the following target architectures:
 - `arm64`
 - `arm32v7`
 
-Available debian packages can be listed as a json document via this [link](https://storageicsdmassets.blob.core.windows.net/azure-iot-sdk-dev-packages?restype=container&comp=list). Choose the one appropriate for your usecase and platform and download e.g. via:
+Available debian packages can be listed as a xml document via this [link](https://storageicsdmassets.blob.core.windows.net/azure-iot-sdk-dev-packages?restype=container&comp=list). Choose the one appropriate for your usecase and platform and download e.g. via:
 ```
 wget https://storageicsdmassets.blob.core.windows.net/azure-iot-sdk-dev-packages/azure-iot-sdk-dev-0.1.0-amd64.deb
 ```
