@@ -1,29 +1,39 @@
 # azure-iot-sdk-sys
 
-This repository provides low level rust bindings for the [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c). `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/ICS-DeviceManagement/azure-iot-sdk) and [iot-client-template](https://github.com/ICS-DeviceManagement/iot-client-template-rs).
+This repository provides low level rust bindings for the [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c).<br>
+ `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/ICS-DeviceManagement/azure-iot-sdk) and [iot-client-template](https://github.com/ICS-DeviceManagement/iot-client-template-rs) crates.
 
 # Build
 
-In order to build `azure-iot-sdk-sys` the following library dependencies must be provided via environment variable:
-- `LIB_PATH_AZURESDK`: path to azure-iot-sdk-c libraries
-- `LIB_PATH_UUID`: path to libuuid libraries
-- `LIB_PATH_OPENSSL`: path to openssl libraries
-- `LIB_PATH_CURL`: path to libcurl libraries
+## Optionally enable iot edge support
 
-There are absolute paths expected that might include wildcard semantics. It is expected that the path points to a directory with a "lib" and "include" subfolder.
+In order to build `azure-iot-sdk-sys` with iot edge module API's enabled you have to set `edge_modules` cargo feature:
+```
+cargo build --features edge_modules
+```
 
-## Provide your own libraries
+## Install dependencies
 
-You're free to build your own versions of libraries for the target platform of your choice or use the ones provided by your operating system.
+In order to build `azure-iot-sdk-sys` dependencies to the following library must be installed:
+- `azure-iot-sdk-c` for iot module development
+- `azure-iotedge-sdk-c` for iotedge module development
 
-## Use prebuild libraries for x86_64
+We provide debian packages for the following target architectures:
+- `amd64`
+- `arm64`
+- `arm32v7`
 
-For your convenience we provide for x86_64 a bundle of libraries, created on Ubuntu 20.04lts, as part of our github release. Please find the library archive [here](https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys/releases/latest) 
+Available debian packages can be listed as a xml document via this [link](https://storageicsdmassets.blob.core.windows.net/azure-iot-sdk-dev-packages?restype=container&comp=list). Choose the one appropriate for your usecase and platform and download e.g. via:
+```
+wget https://storageicsdmassets.blob.core.windows.net/azure-iot-sdk-dev-packages/azure-iot-sdk-dev-0.1.0-amd64.deb
+```
 
-## Enable iot edge support
-
-In order to build `azure-iot-sdk-sys` with iot edge module API's enabled you have to set `edge_modules` cargo feature. This builds bindings with `"-DUSE_EDGE_MODULES"` option.<br>
-**Note: `azure-iot-sdk-c` also must have been built with `"-DUSE_EDGE_MODULES"` option!**
+**Note:** The libraries depend on further development libraries that must be installed for the chosen target architecture:
+- `libcurl4-openssl-dev`
+- `libcurl4`
+- `libssl-dev`
+- `libuuid1`
+- `uuid-dev`
 
 # License
 
