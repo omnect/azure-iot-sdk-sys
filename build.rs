@@ -3,15 +3,57 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
+    let link_paths;
+    let include_paths;
+    let env_path_vars = [
+        "LIB_PATH_AZURESDK",
+        "LIB_PATH_UUID",
+        "LIB_PATH_OPENSSL",
+        "LIB_PATH_CURL",
+    ];
+
+    let env_paths: Vec<Option<String>> = env_path_vars
+        .into_iter()
+        .map(|k| env::var(k).ok())
+        .collect();
+
     let (use_iotedge_modules, pkg_name) = if env::var("CARGO_FEATURE_EDGE_MODULES").is_ok() {
         ("-DUSE_EDGE_MODULES", "azure-iotedge-sdk-dev")
     } else {
         ("", "azure-iot-sdk-dev")
     };
 
-    let lib = pkg_config::Config::new().probe(pkg_name).unwrap();
+    match env_paths.contains(&None) {
+        // at least one PATH env is not set
+        // thus fall back to pkg_config
+        true => {
+            println!("build from pkg_config paths");
+            let lib = pkg_config::Config::new().probe(pkg_name).unwrap();
+            link_paths = lib.link_paths;
+            include_paths = lib.include_paths;
+        }
+        // all PATH envs are set
+        // thus use those paths instead of pkg_config
+        false => {
+            println!("build from environment paths");
+            link_paths = env_paths
+                .clone()
+                .into_iter()
+                .map(|p| PathBuf::from(p.unwrap()))
+                .collect();
 
-    lib.link_paths
+            include_paths = vec![
+                PathBuf::from(format!("{}/include", env_paths[0].clone().unwrap())),
+                PathBuf::from(format!("{}/include/azureiot", env_paths[0].clone().unwrap())),
+            ];
+
+            env_path_vars
+                .iter()
+                .for_each(|env| println!("cargo:rerun-if-changed={}", env));
+        }
+    }
+
+    link_paths
         .iter()
         .for_each(|p| println!("cargo:rustc-link-search=native={}", p.display()));
 
@@ -45,7 +87,7 @@ fn main() {
         // enable/disable iotedge
         .clang_arg(use_iotedge_modules)
         .clang_args(
-            lib.include_paths
+            include_paths
                 .iter()
                 .map(|path| format!("-I{}", path.to_string_lossy())),
         )

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] Q3 2022
+ - bring back additional dependency definition via environment variables
+ - environment variables, if completely defined, are preferred over pkg_config
+ - the following paths must be set:
+   - LIB_PATH_AZURESDK
+   - LIB_PATH_UUID
+   - LIB_PATH_OPENSSL
+   - LIB_PATH_CURL
+
 ## [0.4.0] Q2 2022
  - refactored provisioning of azure-iot-sdk dependencies:
    - remove env var based approach to provide paths to pre-built libs and headers
