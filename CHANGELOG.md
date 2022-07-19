@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.1] Q3 2022
 - fixed native library search path handling
+- renamed library path environment variables
 
 ## [0.5.0] Q3 2022
  - bring back additional dependency definition via environment variables
