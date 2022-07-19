@@ -6,10 +6,10 @@ fn main() {
     let link_paths;
     let include_paths;
     let env_path_vars = [
-        "LIB_PATH_AZURESDK",
-        "LIB_PATH_UUID",
-        "LIB_PATH_OPENSSL",
-        "LIB_PATH_CURL",
+        "AZURESDK_PATH",
+        "UUID_PATH",
+        "OPENSSL_PATH",
+        "CURL_PATH",
     ];
 
     let env_paths: Vec<Option<String>> = env_path_vars
@@ -55,7 +55,7 @@ fn main() {
 
     link_paths
         .iter()
-        .for_each(|p| println!("cargo:rustc-link-search=native={}", p.display()));
+        .for_each(|p| println!("cargo:rustc-link-search=native={}/lib", p.display()));
 
     // link the azure iot-sdk libraries.
     // order of libraries matters!
