@@ -55,7 +55,7 @@ fn main() {
 
     link_paths
         .iter()
-        .for_each(|p| println!("cargo:rustc-link-search=native={}", p.display()));
+        .for_each(|p| println!("cargo:rustc-link-search=native={}/lib", p.display()));
 
     // link the azure iot-sdk libraries.
     // order of libraries matters!
