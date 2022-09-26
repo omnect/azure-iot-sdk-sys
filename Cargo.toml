@@ -1,8 +1,11 @@
 [package]
 name = "azure-iot-sdk-sys"
-version = "0.5.2"
+version = "0.5.3"
 edition = "2021"
-authors = ["Joerg Zeidler <joerg.zeidler@conplement.de>", "Jan Zachmann <jan.zachmann@conplement.de>"]
+authors = [
+    "Joerg Zeidler <joerg.zeidler@conplement.de>",
+    "Jan Zachmann <jan.zachmann@conplement.de>",
+]
 build = "build.rs"
 repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
 
@@ -16,5 +19,5 @@ default = []
 edge_modules = []
 
 [build-dependencies]
-bindgen = "0.59.1"
+bindgen = "0.60"
 pkg-config = "0.3.25"
