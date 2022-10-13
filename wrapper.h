@@ -7,3 +7,4 @@
 #include <azureiot/iothub_device_client_ll.h>
 #include <azureiot/iothubtransportmqtt.h>
 #include <azure_c_shared_utility/shared_util_options.h>
+#include <openssl/provider.h>
