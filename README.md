@@ -1,7 +1,7 @@
 # azure-iot-sdk-sys
 
 This repository provides low level rust bindings for the [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c).<br>
- `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/ICS-DeviceManagement/azure-iot-sdk) and [iot-client-template](https://github.com/ICS-DeviceManagement/iot-client-template-rs) crates.
+ `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/omnect/azure-iot-sdk) and [iot-client-template](https://github.com/omnect/iot-client-template-rs) crates.
 
 # Build
 

@@ -7,7 +7,7 @@ authors = [
     "Jan Zachmann <jan.zachmann@conplement.de>",
 ]
 build = "build.rs"
-repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
+repository = "https://github.com/omnect/azure-iot-sdk-sys"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
