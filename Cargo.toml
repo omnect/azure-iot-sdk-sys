@@ -1,13 +1,15 @@
 [package]
 name = "azure-iot-sdk-sys"
-version = "0.5.3"
+version = "0.5.5"
 edition = "2021"
 authors = [
     "Joerg Zeidler <joerg.zeidler@conplement.de>",
     "Jan Zachmann <jan.zachmann@conplement.de>",
 ]
 build = "build.rs"
-repository = "https://github.com/ICS-DeviceManagement/azure-iot-sdk-sys"
+repository = "https://github.com/omnect/azure-iot-sdk-sys"
+description = "Basic sys crate to azure-iot-sdk-c lib."
+license = "MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
