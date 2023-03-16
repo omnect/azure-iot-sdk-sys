@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.5.8] Q1 2023
 - prepared for open source
-- disable clippy warning #[warn(improper_ctypes)]
+- disabled clippy warning #[warn(improper_ctypes)]
 
 ## [0.5.7] Q1 2023
 - bindgen: updated to 0.63
