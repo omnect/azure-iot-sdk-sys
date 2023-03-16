@@ -1,4 +1,5 @@
 # azure-iot-sdk-sys
+Product page: https://www.omnect.io/home
 
 This repository provides low level rust bindings for the [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c).<br>
  `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/omnect/azure-iot-sdk) and [iot-client-template](https://github.com/omnect/iot-client-template-rs) crates.
@@ -49,4 +50,7 @@ submitted for inclusion in the work by you, as defined in the Apache-2.0
 license, shall be dual licensed as above, without any additional terms or
 conditions.
 
-Copyright (c) 2021 conplement AG
+---
+
+copyright (c) 2021 conplement AG<br>
+Content published under the Apache License Version 2.0 or MIT license, are marked as such. They may be used in accordance with the stated license conditions.

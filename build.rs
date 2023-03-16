@@ -5,12 +5,7 @@ use std::path::PathBuf;
 fn main() {
     let link_paths;
     let include_paths;
-    let env_path_vars = [
-        "AZURESDK_PATH",
-        "UUID_PATH",
-        "OPENSSL_PATH",
-        "CURL_PATH",
-    ];
+    let env_path_vars = ["AZURESDK_PATH", "UUID_PATH", "OPENSSL_PATH", "CURL_PATH"];
 
     let env_paths: Vec<Option<String>> = env_path_vars
         .into_iter()
@@ -44,7 +39,10 @@ fn main() {
 
             include_paths = vec![
                 PathBuf::from(format!("{}/include", env_paths[0].clone().unwrap())),
-                PathBuf::from(format!("{}/include/azureiot", env_paths[0].clone().unwrap())),
+                PathBuf::from(format!(
+                    "{}/include/azureiot",
+                    env_paths[0].clone().unwrap()
+                )),
             ];
 
             env_path_vars
