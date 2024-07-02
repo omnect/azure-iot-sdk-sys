@@ -99,7 +99,7 @@ fn main() {
         .blocklist_type("time_t")
         .raw_line("pub type time_t = std::os::raw::c_longlong;")
         // invalidate the built crate whenever any of the included header files changed
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         // generate bindings
         .generate()
         .expect("unable to generate bindings");
