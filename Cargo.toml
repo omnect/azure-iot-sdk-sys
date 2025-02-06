@@ -6,7 +6,7 @@ edition = "2021"
 license = "MIT OR Apache-2.0"
 name = "azure-iot-sdk-sys"
 repository = "https://github.com/omnect/azure-iot-sdk-sys"
-version = "0.6.1"
+version = "0.6.2"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -18,5 +18,5 @@ default = []
 edge_modules = []
 
 [build-dependencies]
-bindgen = "0.69"
+bindgen = "0.71"
 pkg-config = "0.3"
