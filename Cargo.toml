@@ -2,11 +2,11 @@
 authors = ["omnect@conplement.de>"]
 build = "build.rs"
 description = "Basic sys crate to azure-iot-sdk-c lib."
-edition = "2021"
+edition = "2024"
 license = "MIT OR Apache-2.0"
 name = "azure-iot-sdk-sys"
 repository = "https://github.com/omnect/azure-iot-sdk-sys"
-version = "0.6.2"
+version = "0.6.3"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
