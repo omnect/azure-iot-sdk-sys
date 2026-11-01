@@ -2,7 +2,7 @@
 Product page: https://www.omnect.io/home
 
 This repository provides low level rust bindings for the [azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c).<br>
- `azure-iot-sdk-sys` serves as basic sys crate for [azure-iot_sdk](https://github.com/omnect/azure-iot-sdk) and [iot-client-template](https://github.com/omnect/iot-client-template-rs) crates.
+ `azure-iot-sdk-sys` serves as basic sys crate for the [azure-iot-sdk](https://github.com/omnect/azure-iot-sdk) crate.
 
 # Build
 
@@ -26,7 +26,7 @@ We provide debian packages for the following target architectures:
 
 Available debian packages can be listed as a xml document via this [link](https://omnectassetst.blob.core.windows.net/azure-iot-sdk-dev-packages?restype=container&comp=list). Choose the one appropriate for your usecase and platform and download e.g. via:
 ```
-wget https://omnectassetst.blob.core.windows.net/azure-iot-sdk-dev-packages/azure-iot-sdk-dev-0.1.0-amd64.deb
+wget https://omnectassetst.blob.core.windows.net/azure-iot-sdk-dev-packages/azure-<iot|iotedge>-sdk-dev-<sdk version>+<lts tag>-<arch>_<debian release>.deb
 ```
 
 **Note:** The libraries depend on further development libraries that must be installed for the chosen target architecture:

@@ -69,6 +69,7 @@ fn main() {
 
     println!("cargo:rustc-link-lib=uhttp");
     println!("cargo:rustc-link-lib=aziotsharedutil");
+    println!("cargo:rustc-link-lib=c_logging_v2");
     println!("cargo:rustc-link-lib=curl");
     println!("cargo:rustc-link-lib=ssl");
     println!("cargo:rustc-link-lib=crypto");
@@ -98,6 +99,8 @@ fn main() {
         // it appropriately
         .blocklist_type("time_t")
         .raw_line("pub type time_t = std::os::raw::c_longlong;")
+        // rustc warns on these libc declarations: their size_t is generated as c_ulong, not usize
+        .blocklist_function("memcpy|memmove|memset|memcmp|bcmp|strlen")
         // invalidate the built crate whenever any of the included header files changed
         .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         // generate bindings
